@@ -1,0 +1,23 @@
+# secrets — NEVER commit
+bridge/config.json   # holds the bearer token
+.env
+*.key
+*.pem
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# generated Xcode project (regenerate with `xcodegen generate`)
+watch-app/ClaudeWatch.xcodeproj/
+watch-app/*.xcworkspace/
+build/
+DerivedData/
+
+# os / editor
+.DS_Store
+*.swp
+.idea/
+.vscode/

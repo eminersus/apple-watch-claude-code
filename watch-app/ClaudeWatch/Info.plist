@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Info.plist for ClaudeWatch.
+
+  The recommended setup uses `tailscale serve` which gives the bridge a REAL
+  HTTPS certificate on your *.ts.net name, so App Transport Security is happy
+  out of the box and you need NO exceptions here.
+
+  ONLY if you choose to connect over plain http:// (e.g. directly to a Tailscale
+  IP or a LAN IP) do you need to relax ATS. In that case uncomment the
+  NSAppTransportSecurity block below. Traffic inside a Tailscale tailnet is
+  already WireGuard-encrypted, so allowing http within it is reasonable.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>WKApplication</key>
+    <true/>
+
+    <!--
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>YOUR-MACHINE.YOUR-TAILNET.ts.net</key>
+            <dict>
+                <key>NSExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+            </dict>
+        </dict>
+    </dict>
+    -->
+</dict>
+</plist>
