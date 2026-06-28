@@ -41,7 +41,11 @@ targets:
           NSAllowsArbitraryLoads: true
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.eminersus.claudewatch.watchkitapp
+        # A single-target, standalone watchOS app must use a PLAIN bundle id.
+        # The ".watchkitapp" suffix is reserved for the watch half of a companion
+        # iPhone app; using it makes the on-device installer demand a
+        # WKCompanionAppBundleIdentifier and fail with MIInstallerErrorDomain 97.
+        PRODUCT_BUNDLE_IDENTIFIER: com.eminersus.claudewatch
         INFOPLIST_KEY_CFBundleDisplayName: Claude
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor

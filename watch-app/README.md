@@ -37,8 +37,10 @@ Then in Xcode:
    **Signing & Capabilities**.
 2. Check **Automatically manage signing** and choose your **Team**.
    - If it complains the bundle id is taken, change
-     **PRODUCT_BUNDLE_IDENTIFIER** (e.g. `com.yourname.claudewatch.watchkitapp`)
-     in `project.yml` and re-run `xcodegen generate`.
+     **PRODUCT_BUNDLE_IDENTIFIER** (e.g. `com.yourname.claudewatch`) in
+     `project.yml` and re-run `xcodegen generate`. Use a **plain** id — do
+     **not** end it in `.watchkitapp`; that suffix is for the watch half of a
+     companion iPhone app and makes a standalone app fail to install on a device.
 3. Pick your **Apple Watch** (or a **watchOS Simulator**) as the run destination
    in the toolbar.
 4. Press **Run (⌘R)**. The **Claude** app installs and launches on the watch.
