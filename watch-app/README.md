@@ -14,7 +14,7 @@ Source files (everything the app needs is here):
 | `ClaudeWatch/BridgeClient.swift` | Networking (`GET /sessions`, `POST /prompt`). |
 | `ClaudeWatch/Settings.swift` | AppStorage keys. |
 | `ClaudeWatch/Assets.xcassets` | App icon + accent color slots. |
-| `ClaudeWatch/Info.plist` | watchOS app plist (allows plain-http to the bridge for the LAN/Tailscale fallback). |
+| `ClaudeWatch/Info.plist` | watchOS app plist — declares the app watch-only (`WKWatchOnly`, required to install standalone on a device) and allows plain-http to the bridge. |
 | `project.yml` | XcodeGen spec to generate the `.xcodeproj`. |
 
 Requirements: a **Mac with Xcode 16+** (free from the App Store) and an **Apple

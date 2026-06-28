@@ -35,16 +35,20 @@ targets:
       path: ClaudeWatch/Info.plist
       properties:
         CFBundleDisplayName: Claude
+        # WKApplication marks the modern single-target watch app.
         WKApplication: true
+        # WKWatchOnly = YES declares this a STANDALONE watch app with no companion
+        # iPhone app. Required on device: without it the installer fails with
+        # MIInstallerErrorDomain 97, demanding a WKCompanionAppBundleIdentifier.
+        WKWatchOnly: true
         # LAN fallback: allow http://<Mac-LAN-IP>:8787 while Tailscale HTTPS is not logged in yet.
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
     settings:
       base:
-        # A single-target, standalone watchOS app must use a PLAIN bundle id.
-        # The ".watchkitapp" suffix is reserved for the watch half of a companion
-        # iPhone app; using it makes the on-device installer demand a
-        # WKCompanionAppBundleIdentifier and fail with MIInstallerErrorDomain 97.
+        # Plain bundle id (no ".watchkitapp" suffix — that convention is for the
+        # watch half of a companion iPhone app). Standalone identity is asserted
+        # by WKWatchOnly above; this just keeps the id clean.
         PRODUCT_BUNDLE_IDENTIFIER: com.eminersus.claudewatch
         INFOPLIST_KEY_CFBundleDisplayName: Claude
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
