@@ -59,6 +59,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button { showSettings = true } label: {
                         Image(systemName: "gearshape.fill")
+                            .foregroundStyle(.white)
                     }
                 }
             }
@@ -132,8 +133,6 @@ struct ContentView: View {
                 .stroke(promptFocused ? Theme.accent.opacity(0.7) : Theme.cardStroke,
                         lineWidth: promptFocused ? 1.5 : 1)
         )
-        .contentShape(Rectangle())
-        .onTapGesture { promptFocused = true }
         .animation(.easeInOut(duration: 0.15), value: promptFocused)
     }
 
