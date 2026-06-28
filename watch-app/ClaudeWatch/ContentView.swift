@@ -73,7 +73,12 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                     .disabled(sending || prompt.trimmingCharacters(in: .whitespaces).isEmpty)
 
-                    DisclosureGroup("Quick prompts") {
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text("Quick prompts")
+                            .font(.caption2)
+                            .foregroundStyle(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+
                         ForEach(presets, id: \.self) { p in
                             Button(p) { prompt = p; send() }
                                 .buttonStyle(.bordered)

@@ -15,6 +15,16 @@ options:
   deploymentTarget:
     watchOS: "10.0"
 
+schemes:
+  ClaudeWatch:
+    build:
+      targets:
+        ClaudeWatch: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+
 targets:
   ClaudeWatch:
     type: application
@@ -26,12 +36,16 @@ targets:
       properties:
         CFBundleDisplayName: Claude
         WKApplication: true
+        # LAN fallback: allow http://<Mac-LAN-IP>:8787 while Tailscale HTTPS is not logged in yet.
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.example.claudewatch.watchkitapp
+        PRODUCT_BUNDLE_IDENTIFIER: com.eminersus.claudewatch.watchkitapp
         INFOPLIST_KEY_CFBundleDisplayName: Claude
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         GENERATE_INFOPLIST_FILE: NO
         CURRENT_PROJECT_VERSION: 1
         MARKETING_VERSION: "1.0"
+        CODE_SIGN_STYLE: Automatic

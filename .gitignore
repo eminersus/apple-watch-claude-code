@@ -1,5 +1,7 @@
 # secrets — NEVER commit
-bridge/config.json   # holds the bearer token
+# (an inline '#' is NOT a comment in .gitignore, so the note goes on its own line)
+# bridge/config.json holds the bearer token
+bridge/config.json
 .env
 *.key
 *.pem

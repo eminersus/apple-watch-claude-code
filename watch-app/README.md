@@ -14,10 +14,10 @@ Source files (everything the app needs is here):
 | `ClaudeWatch/BridgeClient.swift` | Networking (`GET /sessions`, `POST /prompt`). |
 | `ClaudeWatch/Settings.swift` | AppStorage keys. |
 | `ClaudeWatch/Assets.xcassets` | App icon + accent color slots. |
-| `ClaudeWatch/Info.plist` | watchOS app plist (ATS exception commented out). |
+| `ClaudeWatch/Info.plist` | watchOS app plist (allows plain-http to the bridge for the LAN/Tailscale fallback). |
 | `project.yml` | XcodeGen spec to generate the `.xcodeproj`. |
 
-Requirements: a **Mac with Xcode 15+** (free from the App Store) and an **Apple
+Requirements: a **Mac with Xcode 16+** (free from the App Store) and an **Apple
 ID** for signing (a free personal team works for installing on your own watch).
 
 ---
@@ -80,7 +80,9 @@ If you'd rather not install XcodeGen:
 
 1. On first launch, **Settings** opens. Enter the bridge **URL**
    (`https://your-mac.your-tailnet.ts.net`) and **token** (from the bridge's
-   `config.json`). Tap **Done**.
+   `config.json`). For watchOS Simulator testing on the same Mac, use
+   `http://localhost:8787` instead; the simulator shares the Mac's network
+   stack and this project allows local HTTP for that test path. Tap **Done**.
 2. Tap the **Session** row → pick the Claude Code session to target.
 3. Tap the prompt field → **dictate** (voice) or **type** → tap **Send**.
 4. Use **Quick prompts** for one-tap `continue` / `run the tests` / `yes` etc.

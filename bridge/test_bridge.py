@@ -118,9 +118,14 @@ def main():
             claudey = targets.get(f"{SESS_CLAUDE}:0.0")
             check("claude-looking session flagged claude_like",
                   claudey is not None and claudey["claude_like"] is True, str(claudey))
-            check("claude-looking session sorts first",
-                  body["sessions"][0]["target"] == f"{SESS_CLAUDE}:0.0",
-                  str([s["target"] for s in body["sessions"]]))
+            # Other real Claude/tmux sessions may already exist on the developer's
+            # machine, so don't require our fixture to be the absolute first item.
+            # The invariant we need is that Claude-looking sessions sort before
+            # non-Claude sessions from the same fixture set.
+            ordered = [s["target"] for s in body["sessions"]]
+            check("claude-looking session sorts before plain fixture",
+                  ordered.index(f"{SESS_CLAUDE}:0.0") < ordered.index(f"{SESS_PLAIN}:0.0"),
+                  str(ordered))
 
             # inject into the plain session
             marker = "hello-from-the-watch-98765"

@@ -119,10 +119,11 @@ curl -s https://your-mac.your-tailnet.ts.net/health
 # {"ok": true, ...}
 ```
 
-> **Plain-LAN alternative (home only):** skip Tailscale, use
-> `http://<mac-LAN-ip>:8787`, and uncomment the `NSAppTransportSecurity` block in
-> `watch-app/ClaudeWatch/Info.plist` so watchOS allows the http connection.
-> Tailscale is strongly recommended — it works away from home and keeps real TLS.
+> **Plain-LAN alternative (home only):** skip Tailscale and use
+> `http://<mac-LAN-ip>:8787`. The app already allows plain-http loads
+> (`NSAllowsArbitraryLoads` is set in `watch-app/ClaudeWatch/Info.plist`), so no
+> edit is needed. Tailscale is strongly recommended — it works away from home and
+> keeps real TLS.
 
 ---
 
